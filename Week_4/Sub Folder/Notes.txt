@@ -1,0 +1,21 @@
+======================================================================
+WEEK 4 VAPT STUDY NOTES & CORE CONCEPTS
+======================================================================
+
+1. ADVANCED EXPLOITATION & DEFENSE BYPASS
+   - Exploit Chaining: Combining multiple distinct bugs (e.g., Cross-Site Scripting to Remote Code Execution via Session Hijacking).
+   - ASLR (Address Space Layout Randomization): Randomizes memory offsets. Bypassed via ROP (Return-Oriented Programming) chains.
+   - DEP/NX (Data Execution Prevention): Marks memory pages non-executable. Bypassed by calling native API functions (e.g., virtualprotect).
+
+2. OWASP API TOP 10 FOCUS
+   - BOLA (Broken Object Level Authorization): Occurs when an application fails to validate if the logged-in user possesses valid privileges to view an requested object ID.
+   - Remediation: Strict object-level authorization checks mapping user sessions directly to database rows.
+
+3. PRIVILEGE ESCALATION & PERSISTENCE
+   - SUID (Set Owner User ID): Executables running with target file owner privileges. Misconfigurations let low-privilege actors pivot to root access.
+   - Persistence: Maintaining access post-reboot. Done via crontabs, hidden services, or adding backdoored SSH public keys.
+
+4. NETWORK PROTOCOL ATTACKS
+   - MitM via ARP Spoofing: Poisoning local switches to map the attacker's MAC address to a gateway IP address.
+   - SMB Relay: Capturing NTLM challenge-response handshakes and relaying them to target machines to run unauthorized commands.
+
